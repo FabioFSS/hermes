@@ -1,22 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:hermes/presentation/home.dart';
+import 'presentation/theme/theme.dart';
+import 'package:provider/provider.dart';
+import 'presentation/theme/theme_config.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeConfig(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return Consumer<ThemeConfig>(
+      builder: (context, themeConfig, child) {
+        return MaterialApp(
+          title: 'Custom Themed App',
+          theme: AppTheme.lightTheme, // Light theme
+          darkTheme: AppTheme.darkTheme, // Dark theme
+          themeMode: themeConfig.themeMode, // Toggles between light and dark
+          home: const MyHomePage(
+            title: "Hermes",
+          ),
+        );
+      },
     );
   }
 }

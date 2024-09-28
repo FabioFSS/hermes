@@ -24,6 +24,9 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
+        actions: [
+          IconButton(onPressed: () => (), icon: const Icon(Icons.search))
+        ],
       ),
       body: Center(
         child: Column(

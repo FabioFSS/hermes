@@ -1,3 +1,9 @@
+![background](./docs/assets/background.png)
+
+# Hermes Project
+
+We're introducing the **Hermes** text chat, a p2p chat app that aim the main features of market plus the secure communication. Different from most chat apps, **Hermes** is open source and we think decentralized whether by send or by storage.
+
 # Introduction 
 TODO: This is an p2p chat app.
 

@@ -8,23 +8,25 @@ void main() {
   runApp(
     ChangeNotifierProvider(
       create: (_) => ThemeConfig(),
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeConfig>(
       builder: (context, themeConfig, child) {
         return MaterialApp(
-          title: 'Custom Themed App',
-          theme: AppTheme.lightTheme, // Light theme
-          darkTheme: AppTheme.darkTheme, // Dark theme
-          themeMode: themeConfig.themeMode, // Toggles between light and dark
+          title: 'Hermes',
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: themeConfig.themeMode,
           home: const MyHomePage(
-            title: "Hermes",
+            title: 'Hermes',
           ),
         );
       },

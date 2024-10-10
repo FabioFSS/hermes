@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hermes/presentation/widgets/chat_card.dart';
+import 'package:hermes/presentation/widgets/chat_list.dart';
+import 'package:hermes/presentation/widgets/fixed_contacts.dart';
+import 'package:hermes/presentation/widgets/section_label.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -10,41 +14,27 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         title: Text(widget.title),
         actions: [
           IconButton(onPressed: () => (), icon: const Icon(Icons.search))
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+      body: ListView(
+        padding: const EdgeInsets.all(8),
+        children: <Widget>[
+          const FixedContacts(),
+          const SectionLabel('Chats'),
+          for (int i = 0; i < 10; i++) const ChatCard()
+        ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        onPressed: () => (),
+        tooltip: 'Placeholder',
         child: const Icon(Icons.add),
       ),
     );
